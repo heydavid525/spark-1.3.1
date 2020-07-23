@@ -5,7 +5,7 @@ from os.path import dirname
 from os.path import join
 import time
 
-master_ip = "10.54.1.36"
+main_ip = "10.54.1.36"
 data_path = "/users/wdai/datasets/lr/synth/lr2sp_dim500_s5000_nnz200x1.libsvm.0"
 #data_path = "/proj/BigLearning/jinlianw/data/criteo_click/libsvm/day_0/data.libsvm.0"
 #data_path = "/l0/criteo"
@@ -30,7 +30,7 @@ spark_dir = dirname(script_dir)
 
 cmd = "time %s/bin/spark-submit" % spark_dir
 cmd += " --class LogisticRegression"
-cmd += " --master spark://%s:7077" % master_ip
+cmd += " --main spark://%s:7077" % main_ip
 cmd += " --driver-memory " + driver_memory
 cmd += " %s/lr/target/lr-1.0.jar" % script_dir
 cmd += " --numIterations " + str(num_iterations)
